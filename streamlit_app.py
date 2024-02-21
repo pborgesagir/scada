@@ -1,62 +1,61 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 
-def draw_water_tank_and_pumps(fill_level):
+def draw_schema(fill_level):
     fig, ax = plt.subplots()
 
     # Draw water tank
-    tank_height = 10  # Total height of the tank
-    tank_width = 5    # Total width of the tank
+    tank_height = 100
+    tank_width = 50
+    water_height = fill_level * tank_height
 
-    # Create rectangle for the water tank
-    tank_rect = patches.Rectangle((0, 0), tank_width, tank_height, linewidth=1, edgecolor='k', facecolor='none')
-    ax.add_patch(tank_rect)
+    # Create a rectangle for water tank
+    tank = plt.Rectangle((10, 0), tank_width, tank_height, fill=None, edgecolor='b')
+    ax.add_patch(tank)
 
-    # Create blue rectangle for the water level
-    water_rect = patches.Rectangle((0, 0), tank_width, fill_level * tank_height, linewidth=1, edgecolor='k', facecolor='blue')
-    ax.add_patch(water_rect)
+    # Fill the water tank to the specified level
+    water = plt.Rectangle((10, 0), tank_width, water_height, color='blue')
+    ax.add_patch(water)
 
-    # Draw pumps as circles
-    pump_radius = 1  # Radius of the pump circle
-    for i in range(3):  # Draw three pumps
-        pump_x = tank_width + 2 + (3 * i)
-        pump_y = tank_height / 2
-        pump_circle = patches.Circle((pump_x, pump_y), pump_radius, linewidth=1, edgecolor='k', facecolor='grey')
-        ax.add_patch(pump_circle)
+    # Draw pumps and pipes
+    pumps = [('Pump 1', (80, 40)), ('Pump 2', (80, 80))]
+    for pump, pos in pumps:
+        ax.text(*pos, pump, ha='center')
 
-    # Draw pipelines
-    # Main pipeline from tank to the first pump
-    ax.plot([tank_width, tank_width + 2], [tank_height / 2, tank_height / 2], 'k-', lw=2)
+    # Draw pipes
+    pipe_positions = [
+        ((60, 20), (120, 20)),  # Horizontal pipe
+        ((60, 60), (120, 60)),  # Horizontal pipe
+        ((60, 20), (60, 60)),   # Vertical connecting pipe
+        ((120, 20), (120, 60))  # Vertical connecting pipe
+    ]
     
-    # Pipelines connecting pumps
-    for i in range(2):
-        ax.plot([tank_width + 2 + (3 * i) + pump_radius, tank_width + 2 + (3 * (i + 1)) - pump_radius], 
-                [tank_height / 2, tank_height / 2], 'k-', lw=2)
+    for start, end in pipe_positions:
+        line = plt.Line2D((start[0], end[0]), (start[1], end[1]), lw=2, color='black')
+        ax.add_line(line)
 
-    # Add warning text if the tank is less than 30% full
-    if fill_level < 0.3:
-        warning_msg = "Warning: Low water level!"
-        ax.text(tank_width / 2, tank_height / 2, warning_msg, fontsize=12, color='red', ha='center')
+    # Add flow meters
+    flow_meters = [('FM1', (70, 20)), ('FM2', (70, 60))]
+    for fm, pos in flow_meters:
+        ax.text(*pos, fm, ha='center')
 
     # Customize plot
-    ax.set_title('Water Tank Connected to Hydraulic Pumps')
-    ax.set_xlabel('Width')
-    ax.set_ylabel('Height')
-    ax.set_xlim(-1, tank_width + 10)
-    ax.set_ylim(-1, tank_height + 1)
+    ax.set_xlim(0, 200)
+    ax.set_ylim(0, 120)
     ax.set_aspect('equal', adjustable='box')
-    ax.grid(True)
+    ax.axis('off')  # Turn off the axis
 
     return fig
 
 def main():
-    st.title("Water Tank Connected to Hydraulic Pumps")
+    st.title("Water Tank and Hydraulic Pumps Schema")
 
-    # Display water tank and pumps diagram
+    # User input for tank fill level
     tank_fill_level = st.slider("Water Tank Fill Level", 0.0, 1.0, 0.5, step=0.01)
-    water_tank_fig = draw_water_tank_and_pumps(tank_fill_level)
-    st.pyplot(water_tank_fig)
+
+    # Display schema
+    schema_fig = draw_schema(tank_fill_level)
+    st.pyplot(schema_fig)
 
 if __name__ == "__main__":
     main()
