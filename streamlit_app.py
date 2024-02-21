@@ -1,62 +1,48 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 
-def draw_schema(fill_level):
+def draw_water_tank_and_hospital(fill_level):
     fig, ax = plt.subplots()
 
     # Draw water tank
-    tank_height = 100
-    tank_width = 50
+    tank_height = 10  # Total height of the tank
+    tank_width = 5    # Total width of the tank
+    tank_depth = 3    # Total depth of the tank
+
+    ax.plot([0, tank_width, tank_width, 0, 0], [0, 0, tank_height, tank_height, 0], 'k-')
     water_height = fill_level * tank_height
+    ax.fill_between([0, tank_width], [0, 0], [water_height, water_height], color='blue')
 
-    # Create a rectangle for water tank
-    tank = plt.Rectangle((10, 0), tank_width, tank_height, fill=None, edgecolor='b')
-    ax.add_patch(tank)
+    # Draw hospital building
+    hospital_width = 8
+    hospital_height = 6
+    ax.plot([10, 10 + hospital_width, 10 + hospital_width, 10, 10], [0, 0, hospital_height, hospital_height, 0], 'k-')
 
-    # Fill the water tank to the specified level
-    water = plt.Rectangle((10, 0), tank_width, water_height, color='blue')
-    ax.add_patch(water)
-
-    # Draw pumps and pipes
-    pumps = [('Pump 1', (80, 40)), ('Pump 2', (80, 80))]
-    for pump, pos in pumps:
-        ax.text(*pos, pump, ha='center')
-
-    # Draw pipes
-    pipe_positions = [
-        ((60, 20), (120, 20)),  # Horizontal pipe
-        ((60, 60), (120, 60)),  # Horizontal pipe
-        ((60, 20), (60, 60)),   # Vertical connecting pipe
-        ((120, 20), (120, 60))  # Vertical connecting pipe
-    ]
-    
-    for start, end in pipe_positions:
-        line = plt.Line2D((start[0], end[0]), (start[1], end[1]), lw=2, color='black')
-        ax.add_line(line)
-
-    # Add flow meters
-    flow_meters = [('FM1', (70, 20)), ('FM2', (70, 60))]
-    for fm, pos in flow_meters:
-        ax.text(*pos, fm, ha='center')
+    # Draw pipelines
+    ax.plot([tank_width, 10], [0.5 * tank_height, 0.5 * tank_height], 'k-', lw=2)  # Main pipeline
+    ax.plot([10, 10], [hospital_height, hospital_height - 1], 'k-', lw=2)  # Branch pipeline
+    ax.plot([10, 10 + hospital_width], [hospital_height - 1, hospital_height - 1], 'k-', lw=2)  # Connection to hospital
 
     # Customize plot
-    ax.set_xlim(0, 200)
-    ax.set_ylim(0, 120)
+    ax.set_title('Water Tank Connected to Hospital')
+    ax.set_xlabel('Width')
+    ax.set_ylabel('Height')
+    ax.set_xlim(-1, 20)
+    ax.set_ylim(-1, max(tank_height, hospital_height) + 1)
     ax.set_aspect('equal', adjustable='box')
-    ax.axis('off')  # Turn off the axis
+    ax.grid(True)
 
     return fig
 
 def main():
-    st.title("Water Tank and Hydraulic Pumps Schema")
+    st.title("Water Tank Connected to Hospital")
 
-    # User input for tank fill level
-    tank_fill_level = st.slider("Water Tank Fill Level", 0.0, 1.0, 0.5, step=0.01)
-
-    # Display schema
-    schema_fig = draw_schema(tank_fill_level)
-    st.pyplot(schema_fig)
+    # Display water tank and hospital diagram
+    tank_fill_level = st.slider("Water Tank Fill Level", 0.0, 1.0, 0.5, step=0.1)
+    water_tank_fig = draw_water_tank_and_hospital(tank_fill_level)
+    st.pyplot(water_tank_fig)
 
 if __name__ == "__main__":
     main()
+
 
