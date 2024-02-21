@@ -5,17 +5,45 @@ import matplotlib.patches as patches
 def draw_water_tank_and_pumps(fill_level):
     fig, ax = plt.subplots()
 
-    # Draw water tank
+    # Draw water tank as a funnel
     tank_height = 10  # Total height of the tank
-    tank_width = 5    # Total width of the tank
+    tank_top_width = 8    # Total top width of the tank (wider part)
+    tank_bottom_width = 3  # Bottom width of the tank (narrow part)
+    
+    # Coordinates for the funnel shape (top-left, top-right, bottom-right, bottom-left)
+    tank_coords = [
+        (0, tank_height),  # top-left
+        (tank_top_width, tank_height),  # top-right
+        (tank_top_width / 2 + tank_bottom_width / 2, 0),  # bottom-right
+        (tank_top_width / 2 - tank_bottom_width / 2, 0)  # bottom-left
+    ]
+    
+    tank_polygon = patches.Polygon(tank_coords, closed=True, linewidth=1, edgecolor='k', facecolor='none')
+    ax.add_patch(tank_polygon)
 
-    # Create rectangle for the water tank
-    tank_rect = patches.Rectangle((0, 0), tank_width, tank_height, linewidth=1, edgecolor='k', facecolor='none')
-    ax.add_patch(tank_rect)
+    # Calculate water level coordinates within the funnel
+    # Assuming linear decrease in width with height
+    water_top_width = tank_bottom_width + (tank_top_width - tank_bottom_width) * (fill_level)
+    water_coords = [
+        (tank_top_width / 2 - water_top_width / 2, fill_level * tank_height),
+        (tank_top_width / 2 + water_top_width / 2, fill_level * tank_height),
+        (tank_top_width / 2 + tank_bottom_width / 2, 0),
+        (tank_top_width / 2 - tank_bottom_width / 2, 0)
+    ]
+    
+    water_polygon = patches.Polygon(water_coords, closed=True, linewidth=1, edgecolor='k', facecolor='blue')
+    ax.add_patch(water_polygon)
 
-    # Create blue rectangle for the water level
-    water_rect = patches.Rectangle((0, 0), tank_width, fill_level * tank_height, linewidth=1, edgecolor='k', facecolor='blue')
-    ax.add_patch(water_rect)
+    # Set the limits of the plot
+    ax.set_xlim(-1, max(tank_top_width, tank_bottom_width) + 1)
+    ax.set_ylim(0, tank_height + 1)
+    
+    # Show the plot
+    plt.show()
+
+# Example usage:
+draw_water_tank_and_pumps(0.5)  # Fill level as a fraction of tank height (e.g., 0.5 for 50% full)
+
 
     # Draw pumps as circles
     pump_radius = 1  # Radius of the pump circle
