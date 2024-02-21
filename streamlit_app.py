@@ -8,7 +8,6 @@ def draw_water_tank_and_pumps(fill_level):
     # Draw water tank
     tank_height = 10  # Total height of the tank
     tank_width = 5    # Total width of the tank
-    tank_depth = 3    # Total depth of the tank
 
     # Create rectangle for the water tank
     tank_rect = patches.Rectangle((0, 0), tank_width, tank_height, linewidth=1, edgecolor='k', facecolor='none')
@@ -35,6 +34,11 @@ def draw_water_tank_and_pumps(fill_level):
         ax.plot([tank_width + 2 + (3 * i) + pump_radius, tank_width + 2 + (3 * (i + 1)) - pump_radius], 
                 [tank_height / 2, tank_height / 2], 'k-', lw=2)
 
+    # Add warning text if the tank is less than 30% full
+    if fill_level < 0.3:
+        warning_msg = "Warning: Low water level!"
+        ax.text(tank_width / 2, tank_height / 2, warning_msg, fontsize=12, color='red', ha='center')
+
     # Customize plot
     ax.set_title('Water Tank Connected to Hydraulic Pumps')
     ax.set_xlabel('Width')
@@ -50,12 +54,13 @@ def main():
     st.title("Water Tank Connected to Hydraulic Pumps")
 
     # Display water tank and pumps diagram
-    tank_fill_level = st.slider("Water Tank Fill Level", 0.0, 1.0, 0.5, step=0.1)
+    tank_fill_level = st.slider("Water Tank Fill Level", 0.0, 1.0, 0.5, step=0.01)
     water_tank_fig = draw_water_tank_and_pumps(tank_fill_level)
     st.pyplot(water_tank_fig)
 
 if __name__ == "__main__":
     main()
+
 
 
 
