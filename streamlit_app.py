@@ -18,9 +18,13 @@ def draw_schema(fill_level):
     ax.add_patch(water)
 
     # Draw pumps and pipes
-    pumps = [('Pump 1', (80, 40)), ('Pump 2', (80, 80))]
+    pump_size = 10  # size of the pump
+    pumps = [('Pump 1', (80, 40 - pump_size/2)), ('Pump 2', (80, 80 - pump_size/2))]
     for pump, pos in pumps:
-        ax.text(*pos, pump, ha='center')
+        # Draw pump rectangle and color it yellow
+        pump_rect = plt.Rectangle((pos[0] - pump_size/2, pos[1]), pump_size, pump_size, color='yellow', edgecolor='black')
+        ax.add_patch(pump_rect)
+        ax.text(pos[0], pos[1] + pump_size/2, pump, ha='center', va='center')
 
     # Draw pipes
     pipe_positions = [
