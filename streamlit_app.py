@@ -36,6 +36,7 @@ def draw_water_tank_and_hospital(fill_level):
     ax.add_patch(Circle((22.5, -15), 2, color='darkgray', lw=1.8))
     ax.add_patch(Circle((22.5, -15), 2, fill=False, color='black', lw=1.8))
     ax.plot([22, 21], [-15, -18], color='black', lw=1.8)
+    ax.plot([23, 24], [-15, -18], color='black', lw=1.8)
    
     
     
