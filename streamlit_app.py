@@ -47,7 +47,7 @@ def draw_water_tank_and_hospital(fill_level):
     return fig
 
 def main():
-    st.title("Water Tank Connected to Hospital")
+    st.title("Volume de Água na Caixa d'Água")
 
     # Display water tank and hospital diagram
     tank_fill_level = st.slider("Water Tank Fill Level", 0.0, 1.0, 0.5, step=0.1)
