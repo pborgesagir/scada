@@ -38,6 +38,8 @@ def draw_water_tank_and_hospital(fill_level):
     ax.plot([22, 21], [-15, -18], color='black', lw=1.8)
     ax.plot([23, 24], [-15, -18], color='black', lw=1.8)
     ax.plot([21, 24], [-18, -18], color='black', lw=1.8)
+    # Write "B1" below the pump
+    ax.text(22.5, -19, "B1", color='orange', ha='center')
     
    
     
