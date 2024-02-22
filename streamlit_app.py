@@ -75,6 +75,7 @@ def draw_water_tank_and_hospital(fill_level):
     ax.plot([38.5, 41.5], [-8, -8], color='black', lw=1.8)
     # Write "B2" below the pump
     ax.text(40, -10, "B2", color='orange', ha='center')
+    ax.text(40, -12, "2400W", color='purple', ha='center')
 
     #pipes
     ax.plot([42, 50], [-4, -4], color='grey', lw=1.8)
