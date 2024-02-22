@@ -71,6 +71,7 @@ def draw_water_tank_and_hospital(fill_level):
     #porta
     ax.plot([71.5, 71.5], [2, 6], color='black', lw=2)
     ax.plot([73.5, 73.5], [2, 6], color='black', lw=2)
+    ax.plot([71.5, 73.5], [6, 6], color='black', lw=2)
    
     
     
