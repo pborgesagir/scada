@@ -31,6 +31,12 @@ def draw_water_tank_and_hospital(fill_level):
     ax.set_ylim(-1, max(tank_height, hospital_height) + 1)
     ax.set_aspect('equal', adjustable='box')
     ax.grid(True)
+    
+    # Remove axis ticks and labels
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.xaxis.set_ticklabels([])
+    ax.yaxis.set_ticklabels([])
 
     return fig
 
