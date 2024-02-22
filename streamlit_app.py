@@ -39,10 +39,10 @@ def draw_water_tank_and_hospital(fill_level):
     ax.grid(True)
     
     # Remove axis ticks and labels
-    ax.set_xticks([])
-    ax.set_yticks([])
-    ax.xaxis.set_ticklabels([])
-    ax.yaxis.set_ticklabels([])
+    #ax.set_xticks([])
+    #ax.set_yticks([])
+    #ax.xaxis.set_ticklabels([])
+    #ax.yaxis.set_ticklabels([])
 
     return fig
 
