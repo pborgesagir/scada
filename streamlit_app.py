@@ -67,7 +67,7 @@ def draw_water_tank_and_hospital(fill_level):
     ax.set_title('Volume de Água na Caixa dÁgua')
     # ax.set_xlabel('Width')  # Removed
     # ax.set_ylabel('Height')  # Removed
-    ax.set_xlim(-5, 65)
+    ax.set_xlim(-5, 75)
     ax.set_ylim(-35, max(tank_height, hospital_height) + 10)
     ax.set_aspect('equal', adjustable='box')
     ax.grid(True)
