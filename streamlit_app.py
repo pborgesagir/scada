@@ -16,7 +16,7 @@ def draw_water_tank_and_hospital(fill_level):
     # Draw hospital building
     hospital_width = 8
     hospital_height = 6
-    ax.plot([10, 10 + hospital_width, 10 + hospital_width, 10, 10], [0, 0, hospital_height, hospital_height, 0], 'k-')
+    ax.plot([10, 10 + hospital_width, 10 + hospital_width, 10, 10], [-1, -1, hospital_height, hospital_height, 0], 'k-')
 
     # Draw pipelines
     ax.plot([tank_width, 10], [0.5 * tank_height, 0.5 * tank_height], 'k-', lw=2)  # Main pipeline
