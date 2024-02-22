@@ -63,9 +63,9 @@ def draw_water_tank_and_hospital(fill_level):
     ax.plot([50, 65], [-4, 2], color='grey', lw=1.8)
 
     #hospital
-    ax.plot([65, 80], [-2, -2], color='black', lw=2)
-    ax.plot([65, 65], [-2, 8], color='black', lw=2)
-    ax.plot([80, 80], [-2, 8], color='black', lw=2)
+    ax.plot([65, 80], [2, 2], color='black', lw=2)
+    ax.plot([65, 65], [2, 8], color='black', lw=2)
+    ax.plot([80, 80], [2, 8], color='black', lw=2)
    
     
     
