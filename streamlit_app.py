@@ -60,6 +60,7 @@ def draw_water_tank_and_hospital(fill_level):
 
     #pipes
     ax.plot([42, 50], [-4, -4], color='grey', lw=1.8)
+    ax.plot([50, 65], [-4, 2], color='grey', lw=1.8)
    
     
     
