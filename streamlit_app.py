@@ -24,9 +24,9 @@ def draw_water_tank_and_hospital(fill_level):
     ax.plot([10, 10 + hospital_width], [hospital_height - 1, hospital_height - 1], 'k-', lw=2)  # Connection to hospital
     ax.plot([0, 1.5], [0, -2.5], 'k-', lw=2)
     ax.plot([5, 3.5], [0, -2.5], 'k-', lw=2)
-    ax.plot([1.5, 1.5], [-2.5, -7.5], 'k-', lw=2)
-    ax.plot([3.5, 3.5], [-2.5, -7.5], 'k-', lw=2)
-    ax.plot([1.5, 3.5], [-7.5, -7.5], 'k-', lw=2)
+    ax.plot([1.5, 1.5], [-2.5, -9.5], 'k-', lw=2)
+    ax.plot([3.5, 3.5], [-2.5, -9.5], 'k-', lw=2)
+    ax.plot([1.5, 3.5], [-9.5, -9.5], 'k-', lw=2)
     
 
     # Customize plot
