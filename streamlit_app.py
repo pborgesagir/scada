@@ -96,7 +96,7 @@ def main():
     st.title("Volume de Água na Caixa d'Água")
 
     # Display water tank and hospital diagram
-    tank_fill_level = st.slider("Water Tank Fill Level", 0.0, 1.0, 0.5, step=0.1)
+    tank_fill_level = st.slider("Water Tank Fill Level", 0.0, 1.0, 0.5, step=0.05)
     water_tank_fig = draw_water_tank_and_hospital(tank_fill_level)
     st.pyplot(water_tank_fig)
 
