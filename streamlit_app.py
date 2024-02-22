@@ -33,7 +33,7 @@ def draw_water_tank_and_hospital(fill_level):
     ax.plot([20, 22.5], [-15, -15], color='grey', lw=1.8)
     ax.plot([20, 22.5], [-15, -15], color='grey', lw=1.8)
     
-    #bomba
+    #bomba1
     ax.add_patch(Circle((22.5, -15), 2, color='darkgray', lw=1.8))
     ax.add_patch(Circle((22.5, -15), 2, fill=False, color='black', lw=1.8))
     ax.add_patch(Circle((22.5, -15), 0.5, fill=False, color='black', lw=0.8))
@@ -47,6 +47,16 @@ def draw_water_tank_and_hospital(fill_level):
     ax.plot([24.5, 30], [-14, -14], color='grey', lw=1.8)
     ax.plot([30, 35], [-14, -5], color='grey', lw=1.8)
     ax.plot([35, 40], [-5, -5], color='grey', lw=1.8)
+
+    #bomba2
+    ax.add_patch(Circle((40, -5), 2, color='darkgray', lw=1.8))
+    ax.add_patch(Circle((40, -5), 2, fill=False, color='black', lw=1.8))
+    ax.add_patch(Circle((40, -5), 0.5, fill=False, color='black', lw=0.8))
+    ax.plot([39.5, 38.5], [-5, -2], color='black', lw=1.8)
+    ax.plot([40.5, 41.5], [-5, -2], color='black', lw=1.8)
+    ax.plot([38.5, 41.5], [-5, -2], color='black', lw=1.8)
+    # Write "B2" below the pump
+    ax.text(40, -10, "B2", color='orange', ha='center')
     
     
    
