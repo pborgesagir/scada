@@ -17,12 +17,12 @@ def draw_water_tank_and_hospital(fill_level):
 
 
     fill_percentage = fill_level * 100  # Convert to percentage
-    ax.text(tank_width + 1, water_height, f'{fill_percentage:.0f}%', fontsize=10, color='blue')
+    ax.text(tank_width + 1, water_height, f'{fill_percentage:.0f}%', fontsize=8, color='blue')
 
     # Display warning message if below 30%
     if fill_level < 0.3:
-        warning_message = "Warning: Water level below 30%!"
-        ax.text(tank_width / 2, tank_height + 5, warning_message, fontsize=10, color='red', ha='center')
+        warning_message = "Atenção! Água < 30%!"
+        ax.text(tank_width / 2, tank_height + 5, warning_message, fontsize=8, color='red', ha='center')
 
 
 
