@@ -30,7 +30,7 @@ def draw_water_tank_and_hospital(fill_level):
     
 
     # Customize plot
-    ax.set_title('Water Tank Connected to Hospital')
+    ax.set_title('Volume de Água na Caixa dÁgua')
     # ax.set_xlabel('Width')  # Removed
     # ax.set_ylabel('Height')  # Removed
     ax.set_xlim(-5, 65)
