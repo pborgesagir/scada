@@ -25,8 +25,8 @@ def draw_water_tank_and_hospital(fill_level):
 
     # Customize plot
     ax.set_title('Water Tank Connected to Hospital')
-    ax.set_xlabel('Width')
-    ax.set_ylabel('Height')
+    # ax.set_xlabel('Width')  # Removed
+    # ax.set_ylabel('Height')  # Removed
     ax.set_xlim(-1, 20)
     ax.set_ylim(-1, max(tank_height, hospital_height) + 1)
     ax.set_aspect('equal', adjustable='box')
@@ -50,5 +50,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
