@@ -23,6 +23,7 @@ def draw_water_tank_and_hospital(fill_level):
     ax.plot([10, 10], [hospital_height, hospital_height - 7], 'k-', lw=2)  # Branch pipeline
     ax.plot([10, 10 + hospital_width], [hospital_height - 1, hospital_height - 1], 'k-', lw=2)  # Connection to hospital
     ax.plot([0, 1.5], [0, -2.5], 'k-', lw=2)
+    ax.plot([5, 3.5], [0, -2.5], 'k-', lw=2)
 
     # Customize plot
     ax.set_title('Water Tank Connected to Hospital')
