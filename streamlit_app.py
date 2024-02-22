@@ -1,5 +1,6 @@
 import streamlit as st
 import matplotlib.pyplot as plt
+from matplotlib.patches import Circle
 
 def draw_water_tank_and_hospital(fill_level):
     fig, ax = plt.subplots()
@@ -30,6 +31,8 @@ def draw_water_tank_and_hospital(fill_level):
     ax.plot([3.5, 20], [-9.5, -9.5], color='grey', lw=1.8)
     ax.plot([20, 20], [-9.5, -15], color='grey', lw=1.8)
     ax.plot([20, 22.5], [-15, -15], color='grey', lw=1.8)
+    ax.plot([20, 22.5], [-15, -15], color='grey', lw=1.8)
+    ax.add_patch(Circle((22.5, -15), 2, color='gray', lw=1.8))
     
 
     # Customize plot
