@@ -29,6 +29,7 @@ def draw_water_tank_and_hospital(fill_level):
     ax.plot([1.5, 3.5], [-9.5, -9.5], 'k-', lw=2)
     ax.plot([3.5, 20], [-9.5, -9.5], color='grey', lw=1.8)
     ax.plot([20, 20], [-9.5, -15], color='grey', lw=1.8)
+    ax.plot([20, 25], [-15, -15], color='grey', lw=1.8)
     
 
     # Customize plot
